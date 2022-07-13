@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_col"
+    tools:context=".RatingScreen">
+
+    <TextView
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="25dp"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:text="Feedback"
+        android:id="@+id/feedback_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/feedback_heading"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:text="Rate Your Experience"
+        android:id="@+id/heading_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+
+
+        android:layout_below="@id/heading_rate"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        android:text="Are you satisfied with the service"
+        android:id="@+id/subheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subheading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progress="@integer/material_motion_duration_long_1"
+        android:stepSize="0.1" />
+
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rating"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/edittext_viewcustom"
+        android:hint="Description"
+        android:lines="5" />
+
+    <Button
+
+        android:layout_below="@+id/description"
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/button_col"
+        android:text="Submit" />
+
+
+
+</RelativeLayout>

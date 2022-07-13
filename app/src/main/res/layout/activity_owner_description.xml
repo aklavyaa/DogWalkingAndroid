@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_col"
+    android:orientation="vertical">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/dogpic"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:text="Milo"
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:text="Arrive at 7pm on 28thJune"
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:text="$51.00"
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+
+                android:id="@+id/availability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2hrs"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:text="3480 Champlaing Street \n H3N2V4"
+            android:id="@+id/description_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+
+            <View
+                android:layout_marginTop="15dp"
+                android:background="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="Show this QR code on being asked!! "
+                android:id="@+id/heading_qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="45dp"
+                android:layout_marginLeft="45dp"
+                android:background="@color/white"
+                android:src="@drawable/qrcode"
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Continue"
+            android:backgroundTint="@color/button_col"
+            android:id="@+id/proceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+
+<!--        <View-->
+<!--            android:background="@color/main_col"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"/>-->
+
+
+<!--        <TextView-->
+
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="Select Date and Time for Adam to come:"-->
+<!--            android:id="@+id/datetime_heading"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <LinearLayout-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <TextView-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@color/gray"-->
+<!--                android:text="Select Date"-->
+<!--                android:id="@+id/select_date"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--            <View-->
+<!--                android:background="@color/white"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"/>-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <TextView-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@color/gray"-->
+<!--                android:text="Select Time"-->
+<!--                android:id="@+id/select_time"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--            <View-->
+<!--                android:background="@color/white"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"/>-->
+<!--        </LinearLayout>-->
+<!--        <Button-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="Proceed"-->
+<!--            android:backgroundTint="@color/button_col"-->
+<!--            android:id="@+id/proceed"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

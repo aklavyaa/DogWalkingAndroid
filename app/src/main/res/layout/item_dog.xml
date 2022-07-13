@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+
+
+    >
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/dogpic" />
+
+    <TextView
+
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/profile_image"
+        android:text="Milo"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/rating_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text="2.5 yrs"
+        android:textColor="@color/black" />
+
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rating_no"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/profile_image"
+        android:lines="3"
+        android:text="3480 Champlaing Street \n H3N2V4"
+        android:textColor="@color/black" />
+
+
+    <TextView
+        android:id="@+id/experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:text="2hrs"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/experience"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:text="$51.00"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/timing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="15dp"
+        android:text="Arrive at 7pm on 28th June"
+        android:textColor="@color/black" />
+
+
+    <LinearLayout
+        android:layout_below="@+id/timing"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/button_col"
+            android:text="Apply"
+            android:id="@+id/apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_margin="5dp"
+
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+
+            android:text="Reject"
+            android:id="@+id/reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

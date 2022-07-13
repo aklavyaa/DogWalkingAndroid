@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "611084270089",
+    "project_id": "dogwalkerapp-64ed7",
+    "storage_bucket": "dogwalkerapp-64ed7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611084270089:android:707eb14cdff87f876c96d8",
+        "android_client_info": {
+          "package_name": "com.example.dogwalkerandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611084270089-u8j9tef7q4p0rt9bkb8bldr4aclkuffs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dogwalkerandroid",
+            "certificate_hash": "ad1177731334f605a97e1d14cdaa0724e36c8390"
+          }
+        },
+        {
+          "client_id": "611084270089-0gfpt83b1b1b6gvfk5c3pt7bfb2oe246.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVa40Q8Yr8fHSmfGpvaSQ-iJa3MprriIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611084270089-0gfpt83b1b1b6gvfk5c3pt7bfb2oe246.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

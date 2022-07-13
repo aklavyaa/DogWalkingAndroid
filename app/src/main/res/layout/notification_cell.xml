@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:background="@drawable/rounded"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    >
+
+
+    <Button
+
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Pay"
+        android:backgroundTint="@color/button_col"
+        android:id="@+id/proceed"
+        android:layout_width="120dp"
+        android:layout_height="40dp"/>
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Adam"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/rating_no"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:text="2.5 yrs EXP"
+        android:textColor="@color/black" />
+
+
+
+
+    <TextView
+        android:id="@+id/experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:text="2hrs"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/experience"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:text="$51.00"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:id="@+id/timing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="15dp"
+        android:text="Arrive at 7pm on 28th June"
+        android:textColor="@color/black" />
+
+
+
+
+
+</RelativeLayout>

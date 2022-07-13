@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <RelativeLayout
+        android:layout_height="65dp"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
+        android:orientation="horizontal"
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:background="@color/main_col">
+
+        <EditText
+
+            android:id="@+id/serarch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/notification_icon"
+            android:hint="Search Walker"
+            android:textColorHint="@color/gray" />
+
+
+        <ImageView
+            android:id="@+id/notification_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/daily"
+            android:src="@drawable/ic_baseline_notifications_24"
+
+            />
+
+
+
+        <ImageView
+            android:id="@+id/daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/heart"
+            android:src="@drawable/daily"
+
+            />
+
+        <ImageView
+
+            android:id="@+id/filter_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_baseline_filter_alt_24" />
+
+        <ImageView
+            android:id="@+id/heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/filter_icon"
+            android:src="@drawable/ic_baseline_favorite_24" />
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+
+        android:id="@+id/well_done"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/heading"
+        android:scaleType="centerCrop"
+        android:src="@drawable/images" />
+
+    <RelativeLayout
+        android:background="@drawable/rounded_blue"
+        android:layout_marginTop="350dp"
+        android:id="@+id/bottomview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylcer_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_walker" />
+
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="23dp"
+        app:cardElevation="25dp"
+        android:layout_marginBottom="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:cardBackgroundColor="@color/design_default_color_primary"
+        android:layout_width="250dp"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:text="Veriy Walker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>

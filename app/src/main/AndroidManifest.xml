@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.dogwalkerandroid">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+    <application
+        android:requestLegacyExternalStorage="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DogWalkerAndroid">
+        <activity
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:name=".SignupWalker"
+            android:exported="false" />
+        <activity
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".AfterSplash"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".Splash"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NotificationList"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".WalkerDescription"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".OwnerDescription"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".PaymentToWalker"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".DashboardWalker"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".OwnerDashboard"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".SignUpOwner"
+            android:exported="true" />
+        <activity
+            android:name=".RatingScreen"
+            android:exported="false" />
+        <activity
+            android:name=".DailyWalker"
+            android:exported="false" />
+        <activity
+            android:name=".FavouriteDogWalker"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

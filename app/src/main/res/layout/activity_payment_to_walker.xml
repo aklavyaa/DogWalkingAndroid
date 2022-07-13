@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_col"
+    android:orientation="vertical"
+    tools:context=".PaymentToWalker">
+
+    <TextView
+
+        android:id="@+id/fav_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="Payment"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:text="Card Information"
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:textColorHint="@color/gray"
+        android:hint="Full Name"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/edittext_viewcustom"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:text="Card Detail"
+        android:id="@+id/heading_carddetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:textColorHint="@color/gray"
+
+        android:hint="Card Number"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/edittext_viewcustom"
+        android:id="@+id/heading_card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:textColorHint="@color/gray"
+
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:hint="Exp Date"
+            android:background="@drawable/edittext_viewcustom"
+            android:id="@+id/exp_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:textColorHint="@color/gray"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:hint="CVV"
+            android:background="@drawable/edittext_viewcustom"
+            android:id="@+id/cvv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="Continue"
+        android:backgroundTint="@color/button_col"
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</LinearLayout>

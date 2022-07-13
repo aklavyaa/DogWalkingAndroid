@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_col"
+    android:orientation="vertical">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/dogwalkdescription_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:text="Adam"
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <ImageView
+                android:layout_marginRight="3dp"
+                android:src="@drawable/ic_baseline_star_rate_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:text="4.5"
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:text="$25.50/hr"
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:gravity="center"
+                android:padding="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:text="3/08/22 to 9/08/22 \n 6pm to 10pm"
+                android:id="@+id/availability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:text="Description:"
+            android:id="@+id/description_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:textColor="@color/gray"
+            android:layout_marginTop="5dp"
+            android:text="My name is Adam I am 25yr old. I love dogs. And I love taking care of dogs. So I am open for the job opportunity as dog walker. If you would like to hire me as a dog walker please hit below button to proceed."
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginTop="15dp"
+
+            android:background="@color/main_col"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:text="Total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="23sp"
+                    android:textColor="@color/white"
+                    android:text="$51.00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="25sp"
+                    android:background="@color/gray"
+                    android:text="+"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:paddingRight="15dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="25sp"
+                    android:text="2hr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+
+                    android:textColor="@color/white"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="25sp"
+                    android:background="@color/gray"
+                    android:text="-"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="@color/main_col"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+        <TextView
+
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:text="Select Date and Time for Adam to come:"
+            android:id="@+id/datetime_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/gray"
+                android:text="Select Date"
+                android:id="@+id/select_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/gray"
+                android:text="Select Time"
+                android:id="@+id/select_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+        </LinearLayout>
+
+
+
+
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Proceed"
+            android:backgroundTint="@color/button_col"
+            android:id="@+id/proceed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_col"
+    tools:context=".Splash">
+
+    <TextView
+
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="We Care \nThe Loyalist Creature"
+        android:textColor="@color/main_col"
+        android:textSize="25sp" />
+
+
+
+
+
+    <LinearLayout
+        android:layout_below="@+id/title"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:textColor="@color/white"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="DogOwner"
+            android:backgroundTint="@color/main_col"
+            android:id="@+id/dogowner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:textColor="@color/white"
+
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="DogWalker"
+            android:backgroundTint="@color/main_col"
+            android:id="@+id/dogwalker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:textColor="@color/white"
+
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="Admin"
+            android:backgroundTint="@color/main_col"
+            android:id="@+id/admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/red_dog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
