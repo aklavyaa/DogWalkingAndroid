@@ -40,6 +40,31 @@ public class Login extends AppCompatActivity {
     private FirebaseFirestore db;
 
 
+//    private void signInWalker(String email,String password){
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            Log.e(TAG, "signInWithEmail:success");
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            Toast.makeText(Login.this, "LoginSuccessfull", Toast.LENGTH_SHORT).show();
+////                            startActivity(new Intent(Login.this,OwnerDashboard.class));
+//
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Log.w(TAG, "signInWithEmail:failure" );
+//                            Toast.makeText(Login.this, task.getException().getMessage(),
+//                                    Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    }
+//                });
+//    }
+
+
+
     private void signIn(String email,String password){
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -50,7 +75,21 @@ public class Login extends AppCompatActivity {
                             Log.e(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(Login.this, "LoginSuccessfull", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Login.this,OwnerDashboard.class));
+
+                            switch(SharedPref.getString(SharedPref.USER_STATE,"")) {
+                                case SharedPref.DOGOWNER:
+//                                    signIn(email,password);
+                                    startActivity(new Intent(Login.this,OwnerDashboard.class));
+
+                                    break;
+                                case SharedPref.DOGWALKER:
+                                    startActivity(new Intent(Login.this,DashboardWalker.class));
+                                    break;
+                                default:
+//                        setContentView(R.layout.default);
+                                    break;
+                            }
+
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -110,55 +149,137 @@ public class Login extends AppCompatActivity {
                             Log.e(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 //                            updateUI(user);
+                            switch(SharedPref.getString(SharedPref.USER_STATE,"")) {
+                                case SharedPref.DOGOWNER:
+
+                                    db.collection("DogOwner")
+                                            .whereEqualTo("id", user.getUid())
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (task.isSuccessful()) {
+
+                                                        if (task.getResult().isEmpty()){
+
+                                                            Map<String, Object> docData = new HashMap<>();
+                                                            docData.put("id", user.getUid());
+                                                            docData.put("user_address", "");
+                                                            docData.put("user_age", "");
+                                                            docData.put("user_description", "");
+                                                            docData.put("user_email", user.getEmail());
+                                                            docData.put("user_id", user.getUid());
+                                                            docData.put("user_image", "");
+                                                            docData.put("user_name", user.getDisplayName());
+                                                            docData.put("user_password", "");
+
+                                                            db.collection("DogOwner").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                @Override
+                                                                public void onSuccess(DocumentReference documentReference) {
+                                                                    Toast.makeText(Login.this, "Succes", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }).addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Toast.makeText(Login.this, "Failure", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
 
 
-                            db.collection("DogOwner")
-                                    .whereEqualTo("id", user.getUid())
-                                    .get()
-                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                            if (task.isSuccessful()) {
 
-                                                if (task.getResult().isEmpty()){
+                                                        }else {
 
-                                                    Map<String, Object> docData = new HashMap<>();
-                                                    docData.put("id", user.getUid());
-                                                    docData.put("user_address", "");
-                                                    docData.put("user_age", "");
-                                                    docData.put("user_description", "");
-                                                    docData.put("user_email", user.getEmail());
-                                                    docData.put("user_id", user.getUid());
-                                                    docData.put("user_image", "");
-                                                    docData.put("user_name", user.getDisplayName());
-                                                    docData.put("user_password", "");
-
-                                                    db.collection("DogOwner").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                        @Override
-                                                        public void onSuccess(DocumentReference documentReference) {
-                                                            Toast.makeText(Login.this, "Succes", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(Login.this, "Already has the data", Toast.LENGTH_SHORT).show();
                                                         }
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(Login.this, "Failure", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
-
-
-
-                                                }else {
-
-                                                    Toast.makeText(Login.this, "Already has the data", Toast.LENGTH_SHORT).show();
-                                                }
 //                                                for (QueryDocumentSnapshot document : task.getResult()) {
 //                                                    Log.d(TAG, document.getId() + " => " + document.getData());
 //                                                }
-                                            } else {
-                                                Log.d(TAG, "Error getting documents: ", task.getException());
-                                            }
-                                        }
-                                    });
+                                                    } else {
+                                                        Log.d(TAG, "Error getting documents: ", task.getException());
+                                                    }
+                                                }
+                                            });
+
+
+
+
+//                                    startActivity(new Intent(Login.this,SignUpOwner.class));
+                                    break;
+                                case SharedPref.DOGWALKER:
+
+                                    db.collection("DogWalker")
+                                            .whereEqualTo("id", user.getUid())
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (task.isSuccessful()) {
+
+                                                        if (task.getResult().isEmpty()){
+
+                                                            Map<String, Object> docData = new HashMap<>();
+//                                                            docData.put("id", user.getUid());
+//                                                            docData.put("user_address", "");
+//                                                            docData.put("user_age", "");
+//                                                            docData.put("user_description", "");
+//                                                            docData.put("user_email", user.getEmail());
+//                                                            docData.put("user_id", user.getUid());
+//                                                            docData.put("user_image", "");
+//                                                            docData.put("user_name", user.getDisplayName());
+//                                                            docData.put("user_password", "");
+
+
+                                                            docData.put("id", user.getUid());
+                                                            docData.put("user_address", "");
+                                                            docData.put("user_age", "");
+                                                            docData.put("user_description", "");
+                                                            docData.put("user_email", user.getEmail());
+                                                            docData.put("user_id", user.getUid());
+                                                            docData.put("user_image", "");
+                                                            docData.put("user_name", user.getDisplayName());
+                                                            docData.put("user_password", "");
+                                                            docData.put("experience", "");
+                                                            docData.put("timingTo", "");
+                                                            docData.put("timingFrom", "");
+                                                            docData.put("date", "");
+
+
+                                                            db.collection("DogOwner").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                @Override
+                                                                public void onSuccess(DocumentReference documentReference) {
+                                                                    Toast.makeText(Login.this, "Succes", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }).addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Toast.makeText(Login.this, "Failure", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
+
+
+
+                                                        }else {
+
+                                                            Toast.makeText(Login.this, "Already has the data", Toast.LENGTH_SHORT).show();
+                                                        }
+//                                                for (QueryDocumentSnapshot document : task.getResult()) {
+//                                                    Log.d(TAG, document.getId() + " => " + document.getData());
+//                                                }
+                                                    } else {
+                                                        Log.d(TAG, "Error getting documents: ", task.getException());
+                                                    }
+                                                }
+                                            });
+
+
+//                                    startActivity(new Intent(Login.this,SignupWalker.class));
+                                    break;
+                                default:
+//                        setContentView(R.layout.default);
+                                    break;
+                            }
+
+
 
 
                             Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
@@ -179,6 +300,8 @@ public class Login extends AppCompatActivity {
         initialiseGoogleSignIn();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+
 
 
 
@@ -206,6 +329,7 @@ public class Login extends AppCompatActivity {
                             signIn(email,password);
                             break;
                         case SharedPref.DOGWALKER:
+                            signIn(email,password);
                             startActivity(new Intent(Login.this,DashboardWalker.class));
                             break;
                         default:
@@ -242,13 +366,8 @@ public class Login extends AppCompatActivity {
         findViewById(R.id.loginwithgoogle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 signIn();
             }
         });
-
     }
-
-
-
 }

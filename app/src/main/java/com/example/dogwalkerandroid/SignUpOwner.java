@@ -69,8 +69,6 @@ public class SignUpOwner extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
-
-
         ((RelativeLayout)findViewById(R.id.profile_view)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +128,6 @@ public class SignUpOwner extends AppCompatActivity {
         String description = ((EditText)findViewById(R.id.description)).getText().toString();
         String password = ((EditText)findViewById(R.id.password)).getText().toString();
         String repassword = ((EditText)findViewById(R.id.repassword)).getText().toString();
-
 
         if(name.isEmpty() || email.isEmpty() || age.isEmpty() ||
                 address.isEmpty() || description.isEmpty() || password.isEmpty()
@@ -226,7 +223,7 @@ public class SignUpOwner extends AppCompatActivity {
 
             ((CircleImageView)findViewById(R.id.profile_image)).setImageURI(uri);
 //            profile_image
-                    // Use Uri object instead of File to avoid storage permissions
+            // Use Uri object instead of File to avoid storage permissions
 //                    imgProfile.setImageURI(fileUri)
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();

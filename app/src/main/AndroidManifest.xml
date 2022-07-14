@@ -20,7 +20,6 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:theme="@style/Theme.Design.NoActionBar"
             android:name=".SignupWalker"
             android:exported="false" />
         <activity
@@ -70,6 +69,7 @@
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
+            android:theme="@style/Theme.Design.NoActionBar"
             android:name=".SignUpOwner"
             android:exported="true" />
         <activity

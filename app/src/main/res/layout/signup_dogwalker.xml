@@ -1,213 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/main_col"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
     >
-
-    <TextView
-        android:textSize="22sp"
-        android:textColor="@color/button_col"
-        android:layout_margin="25dp"
-        android:text="Lets Go!!\nFill in your details to get started"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-
-    <RelativeLayout
-        android:layout_marginTop="25dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/main_col"
+        >
+
+        <TextView
+            android:textSize="22sp"
+            android:textColor="@color/button_col"
+            android:layout_margin="25dp"
+            android:text="Lets Go!!\nFill in your details to get started"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
         <RelativeLayout
-            android:layout_centerHorizontal="true"
-            android:layout_width="120dp"
-            android:layout_height="120dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/profile_view"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/profile_image"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@drawable/man"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp" />
+                android:layout_width="120dp"
+                android:layout_height="120dp">
 
-            <ImageView
-                android:layout_marginBottom="30dp"
-                android:layout_marginRight="15dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/ic_baseline_camera_alt_24"
-                android:id="@+id/camera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/man"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
+
+                <ImageView
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/ic_baseline_camera_alt_24"
+                    android:id="@+id/camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
         </RelativeLayout>
 
-    </RelativeLayout>
+
+        <EditText
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="Name"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edittext_viewcustom"
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="Email"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edittext_viewcustom"
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
-    <EditText
+        <EditText
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="Experience"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edittext_viewcustom"
+            android:id="@+id/experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        android:hint="Name"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <EditText
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="Hourly Rate"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edittext_viewcustom"
+            android:id="@+id/rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-
-    <EditText
-
-        android:hint="Experience"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/experience"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-
-        android:hint="Hourly Rate"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/rate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
-        android:text="Availablity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:text="Availablity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
 
-    <LinearLayout
-        android:layout_marginLeft="25dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RadioGroup
+        <LinearLayout
+            android:layout_marginLeft="25dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RadioButton
-                android:textColor="@color/white"
-                android:text="Daily"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/availability_grp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:textColor="@color/white"
+                    android:text="Daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:textColor="@color/white"
+                    android:text="Span of days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/dateview"
+            android:layout_marginTop="10dp"
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Date"
+                android:textColor="@color/gray"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/edittext_viewcustom"
+                android:id="@+id/from"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <RadioButton
-                android:textColor="@color/white"
-                android:text="Span of days"
-                android:layout_width="wrap_content"
+            <!--            <TextView-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:hint="To:"-->
+            <!--                android:layout_marginLeft="25dp"-->
+            <!--                android:layout_marginRight="25dp"-->
+            <!--                android:background="@drawable/edittext_viewcustom"-->
+            <!--                android:id="@+id/to"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"/>-->
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:text="Time From"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray"
+                android:background="@drawable/edittext_viewcustom"
+                android:id="@+id/timingfrom"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
-        </RadioGroup>
+            <TextView
 
-    </LinearLayout>
+                android:text="Time To"
+                android:layout_weight="1"
+                android:textColor="@color/gray"
+                android:background="@drawable/edittext_viewcustom"
+                android:id="@+id/timingto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
 
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
 
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </LinearLayout>
 
-        <TextView
-            android:layout_weight="1"
-            android:hint="From:"
+
+
+
+
+
+
+        <EditText
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="Description"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/edittext_viewcustom"
-            android:id="@+id/from"
+            android:id="@+id/description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="60dp"/>
 
-        <TextView
-            android:layout_weight="1"
-            android:hint="To:"
+        <EditText
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="Address"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/edittext_viewcustom"
-            android:id="@+id/to"
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+
+            android:weightSum="10"
+            android:background="@drawable/edittext_viewcustom"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_weight="8"
+                android:background="@null"
+                android:textColor="@color/black"
+
+                android:inputType="textPassword"
+                android:textColorHint="@color/gray"
+
+                android:hint="Password"
+
+                android:id="@+id/password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_weight="2"
+                android:src="@drawable/ic_visibility_off_24"
+                android:id="@+id/eye"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="10"
+            android:background="@drawable/edittext_viewcustom"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_weight="8"
+                android:background="@null"
+                android:textColor="@color/black"
+
+                android:inputType="textPassword"
+                android:textColorHint="@color/gray"
+
+                android:hint="Repassword"
+
+                android:id="@+id/repassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_weight="2"
+                android:src="@drawable/ic_visibility_off_24"
+                android:id="@+id/eye_repassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+
+        <!--        <EditText-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textColorHint="@color/gray"-->
+        <!--            android:hint="Password"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:layout_marginLeft="25dp"-->
+        <!--            android:layout_marginRight="25dp"-->
+        <!--            android:background="@drawable/edittext_viewcustom"-->
+        <!--            android:id="@+id/password"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"/>-->
+
+        <!--        <EditText-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textColorHint="@color/gray"-->
+        <!--            android:hint="Repassword"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:layout_marginLeft="25dp"-->
+        <!--            android:layout_marginRight="25dp"-->
+        <!--            android:background="@drawable/edittext_viewcustom"-->
+        <!--            android:id="@+id/repassword"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"/>-->
+
+        <Button
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Register"
+            android:backgroundTint="@color/button_col"
+            android:id="@+id/proceed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-    <EditText
-
-        android:hint="Timing"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/after_hrs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-
-    <EditText
-
-        android:hint="Description"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"/>
-
-
-    <EditText
-
-        android:hint="Password"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-
-        android:hint="Repassword"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_viewcustom"
-        android:id="@+id/repassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="Next"
-        android:backgroundTint="@color/button_col"
-        android:id="@+id/proceed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-
-
-
-</LinearLayout>
+</ScrollView>
