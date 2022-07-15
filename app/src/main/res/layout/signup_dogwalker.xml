@@ -119,11 +119,13 @@
 
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioGroup
+                android:checkedButton="@id/span_radio"
                 android:id="@+id/availability_grp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -135,6 +137,7 @@
                     android:layout_height="wrap_content"/>
 
                 <RadioButton
+                    android:id="@+id/span_radio"
                     android:textColor="@color/white"
                     android:text="Span of days"
                     android:layout_width="wrap_content"
@@ -147,7 +150,7 @@
 
         <LinearLayout
             android:id="@+id/dateview"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
 
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -331,6 +334,7 @@
         <!--            android:layout_height="wrap_content"/>-->
 
         <Button
+            android:layout_marginBottom="65dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_gravity="center_horizontal"

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Pair;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -65,8 +66,22 @@ public class SignupWalker extends AppCompatActivity {
     private FirebaseFirestore db;
     StorageReference storageRef;
     String imageUri = "";
+    ProgressDialog progressDialog;
 
 
+    private void startProgressDialog(){
+        progressDialog = new ProgressDialog(SignupWalker.this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setTitle("Wait a moment"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+    }
+
+
+    private void stopProgressDialog(){
+        progressDialog.cancel();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -214,12 +229,11 @@ public class SignupWalker extends AppCompatActivity {
                 Log.e(TAG, "onCheckedChanged: "+radioButton.getText().toString());
                 if (radioButton.getText().toString().equalsIgnoreCase("daily")){
                     ((LinearLayout)findViewById(R.id.dateview)).setVisibility(View.GONE);
-                    ((TextView)findViewById(R.id.timingfrom)).setText("");
-                }else {
-                    ((LinearLayout)findViewById(R.id.dateview)).setVisibility(View.VISIBLE);
-
+                    ((TextView)findViewById(R.id.from)).setText("Date");
                 }
-
+                else {
+                    ((LinearLayout)findViewById(R.id.dateview)).setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -271,7 +285,10 @@ public class SignupWalker extends AppCompatActivity {
                 String date = ((TextView)findViewById(R.id.from)).getText().toString();
                 if(name.isEmpty() || email.isEmpty() || age.isEmpty() ||
                         address.isEmpty() || description.isEmpty() || password.isEmpty()
-                        || repassword.isEmpty() || experience.isEmpty() || timingFrom.isEmpty() || timingTo.isEmpty()){
+                        || repassword.isEmpty() || experience.isEmpty() ||
+                        timingFrom.equalsIgnoreCase("Time From") ||
+                        timingTo.equalsIgnoreCase("Time To")
+                        ){
                     Toast.makeText(SignupWalker.this, "Please fill all the details", Toast.LENGTH_SHORT).show();
                 }
                 else if (!password.equals(repassword)){
@@ -280,6 +297,7 @@ public class SignupWalker extends AppCompatActivity {
                 else if (!PASSWORD_PATTERN.matcher(password).matches()) {
                     Toast.makeText(SignupWalker.this, "Password is too weak!! Please enter atleast 8 alphanumeric character.", Toast.LENGTH_SHORT).show();
                 } else {
+                    startProgressDialog();
                     mAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(SignupWalker.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -305,6 +323,8 @@ public class SignupWalker extends AppCompatActivity {
                                         docData.put("timingTo", timingTo);
                                         docData.put("timingFrom", timingFrom);
                                         docData.put("date", date);
+                                        docData.put("isEnable",true);
+                                        docData.put("isReserved",false);
 
 
 
@@ -312,11 +332,14 @@ public class SignupWalker extends AppCompatActivity {
                                         db.collection("DogWalker").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {
+                                                stopProgressDialog();
+                                                startActivity(new Intent(SignupWalker.this,DashboardWalker.class));
                                                 Toast.makeText(SignupWalker.this, "Succes", Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
+                                                stopProgressDialog();
                                                 Toast.makeText(SignupWalker.this, "Failure", Toast.LENGTH_SHORT).show();
                                             }
                                         });
@@ -324,6 +347,8 @@ public class SignupWalker extends AppCompatActivity {
 
 
                                     } else {
+                                        stopProgressDialog();
+
                                         // If sign in fails, display a message to the user.
                                         Log.e(TAG, "createUserWithEmail:failure", task.getException());
                                         Toast.makeText(SignupWalker.this, Objects.requireNonNull(task.getException().getMessage()).toString(),
