@@ -79,6 +79,8 @@ public class SignupWalker extends AppCompatActivity {
     }
 
 
+
+
     private void stopProgressDialog(){
         progressDialog.cancel();
     }
@@ -325,6 +327,12 @@ public class SignupWalker extends AppCompatActivity {
                                         docData.put("date", date);
                                         docData.put("isEnable",true);
                                         docData.put("isReserved",false);
+                                        docData.put("lat",45);
+                                        docData.put("lng",55);
+                                        docData.put("rating",5);
+                                        docData.put("user_hourly_rate",19);
+
+//                                        ,,,
 
 
 

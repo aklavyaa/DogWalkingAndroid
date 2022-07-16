@@ -6,6 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.dogwalkerandroid.utils.DashboardDogOwnerModel;
+
+import java.util.ArrayList;
+
 public class DailyWalker extends AppCompatActivity {
 
     @Override
@@ -15,7 +19,9 @@ public class DailyWalker extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recylcer_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new OwnerAdap(this));
+//        recyclerView.setAdapter(new WalkerAdap(this));
+        recyclerView.setAdapter(new WalkerAdap(this,new ArrayList<DashboardDogOwnerModel>()));
+
 
     }
 }
