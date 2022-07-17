@@ -87,11 +87,18 @@ public class Login extends AppCompatActivity {
                                                  if (task.isSuccessful()){
                                                      for (QueryDocumentSnapshot document : task.getResult()) {
                                                          Log.d(TAG, document.getId() + " => " + document.getData());
-                                                          if (((Boolean)document.getData().get("isEnable"))){
-                                                              startActivity(new Intent(Login.this,OwnerDashboard.class));
-                                                          }else {
-                                                              Toast.makeText(Login.this, "You are revoked by admin", Toast.LENGTH_SHORT).show();
-                                                          }
+                                                         if (document.getData().get("isEnable")!=null){
+                                                             if (((Boolean)document.getData().get("isEnable"))){
+                                                                 startActivity(new Intent(Login.this,OwnerDashboard.class));
+                                                             }else {
+                                                                 Toast.makeText(Login.this, "You are revoked by admin", Toast.LENGTH_SHORT).show();
+                                                             }
+                                                         } else {
+
+                                                             startActivity(new Intent(Login.this,OwnerDashboard.class));
+
+                                                         }
+
                                                      }
 
                                                  }

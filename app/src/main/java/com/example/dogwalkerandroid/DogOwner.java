@@ -97,7 +97,12 @@ public class DogOwner extends Fragment {
                     for (QueryDocumentSnapshot document : task.getResult()) {
 //                        Log.d(TAG, document.getId() + " => " + document.getData().get);
 
-                        String id = document.getData().get("id").toString();
+                        String id = "POIUY";
+
+                        if (document.getData().get("id")!=null){
+                            id = document.getData().get("id").toString();
+                        }
+
                         String username = document.getData().get("user_name").toString();
                         String userage = document.getData().get("user_age").toString();
                         String userAddress = document.getData().get("user_address").toString();
