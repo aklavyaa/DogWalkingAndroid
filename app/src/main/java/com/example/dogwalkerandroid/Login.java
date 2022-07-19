@@ -404,7 +404,12 @@ public class Login extends AppCompatActivity {
 //                            startActivity(new Intent(Login.this,DashboardWalker.class));
                             break;
                         default:
-                            startActivity(new Intent(Login.this,AdminDashboard.class));
+                            if (email.equalsIgnoreCase("Admin@gmail.com") || password.equalsIgnoreCase("Admin@1234")){
+                                startActivity(new Intent(Login.this,AdminDashboard.class));
+                            } else {
+                                Toast.makeText(Login.this, "Please enter the correct credentials", Toast.LENGTH_SHORT).show();
+                            }
+
 //                        setContentView(R.layout.default);
                             break;
                     }
