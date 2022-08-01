@@ -28,6 +28,7 @@ public class DashboardDogWalkerModel {
     }
 
 
+
     public String getAddress() {
         return address;
     }
