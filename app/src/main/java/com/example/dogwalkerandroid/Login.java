@@ -3,11 +3,14 @@ package com.example.dogwalkerandroid;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,51 +42,92 @@ public class Login extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
     private FirebaseFirestore db;
 
+    private Boolean isVisiblePass = false;
 
-//    private void signInWalker(String email,String password){
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            Log.e(TAG, "signInWithEmail:success");
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            Toast.makeText(Login.this, "LoginSuccessfull", Toast.LENGTH_SHORT).show();
-////                            startActivity(new Intent(Login.this,OwnerDashboard.class));
-//
-//                        } else {
-//                            // If sign in fails, display a message to the user.
-//                            Log.w(TAG, "signInWithEmail:failure" );
-//                            Toast.makeText(Login.this, task.getException().getMessage(),
-//                                    Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    }
-//                });
-//    }
+    ProgressDialog progressDialog;
+
+    private void startProgressDialog(){
+        progressDialog = new ProgressDialog(Login.this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setTitle("Wait a moment"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+    }
+
+    private void stopProgressDialog(){
+        progressDialog.cancel();
+    }
 
 
 
     private void signIn(String email,String password){
+        startProgressDialog();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        stopProgressDialog();
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.e(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Login.this, "LoginSuccessfull", Toast.LENGTH_SHORT).show();
+
+
+
+
+//                            Toast.makeText(Login.this, "LoginSuccessfull", Toast.LENGTH_SHORT).show();
 
                             switch(SharedPref.getString(SharedPref.USER_STATE,"")) {
                                 case SharedPref.DOGOWNER:
 //                                    signIn(email,password);
-                                    startActivity(new Intent(Login.this,OwnerDashboard.class));
+                                    db.collection("DogOwner").whereEqualTo("id",user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                 if (task.isSuccessful()){
+                                                     for (QueryDocumentSnapshot document : task.getResult()) {
+                                                         Log.d(TAG, document.getId() + " => " + document.getData());
+                                                         if (document.getData().get("isEnable")!=null){
+                                                             if (((Boolean)document.getData().get("isEnable"))){
+                                                                 startActivity(new Intent(Login.this,OwnerDashboard.class));
+                                                             }else {
+                                                                 Toast.makeText(Login.this, "You are revoked by admin", Toast.LENGTH_SHORT).show();
+                                                             }
+                                                         } else {
+
+                                                             startActivity(new Intent(Login.this,OwnerDashboard.class));
+
+                                                         }
+
+                                                     }
+
+                                                 }
+                                        }
+                                    });
 
                                     break;
                                 case SharedPref.DOGWALKER:
-                                    startActivity(new Intent(Login.this,DashboardWalker.class));
+
+                                    db.collection("DogWalker").whereEqualTo("id",user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()){
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                                    if (((Boolean)document.getData().get("isEnable"))){
+                                                        startActivity(new Intent(Login.this,DashboardWalker.class));
+                                                    }else {
+                                                        Toast.makeText(Login.this, "You are revoked by admin", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    });
+
+
+
+//                                    startActivity(new Intent(Login.this,DashboardWalker.class));
                                     break;
                                 default:
 //                        setContentView(R.layout.default);
@@ -149,6 +193,8 @@ public class Login extends AppCompatActivity {
                             Log.e(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 //                            updateUI(user);
+
+
                             switch(SharedPref.getString(SharedPref.USER_STATE,"")) {
                                 case SharedPref.DOGOWNER:
 
@@ -172,10 +218,13 @@ public class Login extends AppCompatActivity {
                                                             docData.put("user_image", "");
                                                             docData.put("user_name", user.getDisplayName());
                                                             docData.put("user_password", "");
+                                                            docData.put("isEnable",true);
+                                                            docData.put("isReserved",false);
 
                                                             db.collection("DogOwner").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                                 @Override
                                                                 public void onSuccess(DocumentReference documentReference) {
+                                                                    startActivity(new Intent(Login.this,OwnerDashboard.class));
                                                                     Toast.makeText(Login.this, "Succes", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }).addOnFailureListener(new OnFailureListener() {
@@ -242,11 +291,14 @@ public class Login extends AppCompatActivity {
                                                             docData.put("timingTo", "");
                                                             docData.put("timingFrom", "");
                                                             docData.put("date", "");
+                                                            docData.put("isEnable",true);
+                                                            docData.put("isReserved",false);
 
 
                                                             db.collection("DogOwner").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                                 @Override
                                                                 public void onSuccess(DocumentReference documentReference) {
+                                                                    startActivity(new Intent(Login.this,OwnerDashboard.class));
                                                                     Toast.makeText(Login.this, "Succes", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }).addOnFailureListener(new OnFailureListener() {
@@ -297,11 +349,30 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
+//        UserRecord userRecord = FirebaseAuth.getInstance().
+
+
         initialiseGoogleSignIn();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
 
+
+        ((ImageView)findViewById(R.id.eye)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isVisiblePass){
+                    ((ImageView)findViewById(R.id.eye)).setImageResource(R.drawable.ic_visibility_24);
+                    ((EditText)findViewById(R.id.password)).setTransformationMethod(null);
+                }else {
+                    ((ImageView)findViewById(R.id.eye)).setImageResource(R.drawable.ic_visibility_off_24);
+                    ((EditText)findViewById(R.id.password)).setTransformationMethod(new PasswordTransformationMethod());
+                }
+                isVisiblePass = !isVisiblePass;
+            }
+        });
 
 
 
@@ -330,10 +401,15 @@ public class Login extends AppCompatActivity {
                             break;
                         case SharedPref.DOGWALKER:
                             signIn(email,password);
-                            startActivity(new Intent(Login.this,DashboardWalker.class));
+//                            startActivity(new Intent(Login.this,DashboardWalker.class));
                             break;
                         default:
-                            startActivity(new Intent(Login.this,AdminDashboard.class));
+                            if (email.equalsIgnoreCase("Admin@gmail.com") || password.equalsIgnoreCase("Admin@1234")){
+                                startActivity(new Intent(Login.this,AdminDashboard.class));
+                            } else {
+                                Toast.makeText(Login.this, "Please enter the correct credentials", Toast.LENGTH_SHORT).show();
+                            }
+
 //                        setContentView(R.layout.default);
                             break;
                     }

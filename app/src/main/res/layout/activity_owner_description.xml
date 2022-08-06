@@ -9,7 +9,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/dogpic"
         android:layout_width="match_parent"
-        android:layout_height="250dp"/>
+        android:layout_height="220dp"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -99,7 +99,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="280dp">
 
 
             <View
@@ -136,16 +136,50 @@
 
         </LinearLayout>
 
-        <Button
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_gravity="center_horizontal"
+
+
+        <LinearLayout
             android:layout_marginTop="20dp"
-            android:text="Continue"
-            android:backgroundTint="@color/button_col"
-            android:id="@+id/proceed"
+            android:weightSum="2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Accept"
+                android:backgroundTint="@color/button_col"
+                android:id="@+id/accept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Reject"
+                android:backgroundTint="@color/red"
+                android:id="@+id/reject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+<!--        <Button-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginRight="25dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="Continue"-->
+<!--            android:backgroundTint="@color/button_col"-->
+<!--            android:id="@+id/proceed"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
 
 
 

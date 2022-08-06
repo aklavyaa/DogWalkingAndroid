@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -58,7 +59,20 @@ public class SignUpOwner extends AppCompatActivity {
     private Boolean isVisibleRePass = false;
     StorageReference storageRef;
     String imageUri = "";
+    ProgressDialog progressDialog;
 
+    private void startProgressDialog(){
+        progressDialog = new ProgressDialog(SignUpOwner.this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setTitle("Wait a moment"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+    }
+
+    private void stopProgressDialog(){
+        progressDialog.cancel();
+    }
 
 
     @Override
@@ -141,6 +155,8 @@ public class SignUpOwner extends AppCompatActivity {
             Toast.makeText(SignUpOwner.this, "Password is too weak!! Please enter atleast 8 alphanumeric character.", Toast.LENGTH_SHORT).show();
         }
         else {
+
+            startProgressDialog();
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -162,15 +178,20 @@ public class SignUpOwner extends AppCompatActivity {
                                 docData.put("user_image", imageUri);
                                 docData.put("user_name", name);
                                 docData.put("user_password", password);
+                                docData.put("isEnable",true);
+                                docData.put("isReserved",false);
 
                                 db.collection("DogOwner").add(docData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
+                                        stopProgressDialog();
+                                        startActivity(new Intent(SignUpOwner.this,OwnerDashboard.class));
                                         Toast.makeText(SignUpOwner.this, "Succes", Toast.LENGTH_SHORT).show();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
+                                        stopProgressDialog();
                                         Toast.makeText(SignUpOwner.this, "Failure", Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -178,6 +199,7 @@ public class SignUpOwner extends AppCompatActivity {
 
 
                             } else {
+                                stopProgressDialog();
                                 // If sign in fails, display a message to the user.
                                 Log.e(TAG, "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(SignUpOwner.this, Objects.requireNonNull(task.getException().getMessage()).toString(),

@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class WalkerDescription extends AppCompatActivity {
+public class OrderList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_description);
-
+        setContentView(R.layout.activity_order_list);
     }
 }
