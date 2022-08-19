@@ -63,6 +63,67 @@ public class WalkerDescription extends AppCompatActivity {
                  * user_id
                  * walker_id
                  */
+ ((TextView)findViewById(R.id.name)).setText(obj.getName());
+        ((TextView)findViewById(R.id.price)).setText("$"+obj.getPrice()+"/hr");
+        ((TextView)findViewById(R.id.rating)).setText(obj.getRating());
+        ((TextView)findViewById(R.id.availability)).setText(obj.getAvailability());
+        ((TextView)findViewById(R.id.description)).setText(obj.getDescription());
+        ((TextView)findViewById(R.id.total_price)).setText("$"+obj.getPrice());
+
+        ((LinearLayout)findViewById(R.id.date_view)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
+//        CalendarConstraints.DateValidator dateValidator = DateValidatorPointForward.now();
+
+        CalendarConstraints.Builder constraintsBuilder =
+                new CalendarConstraints.Builder()
+                        .setValidator(DateValidatorPointForward.now());
+        builder.setCalendarConstraints(constraintsBuilder.build());
+
+
+        MaterialDatePicker materialDatePicker = builder.build();
+
+//        MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.dateRangePicker().setCalendarConstraints()
+
+        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Object selection) {
+                ((TextView)findViewById(R.id.select_date)).setText(materialDatePicker.getHeaderText());
+            }
+        });
+
+
+        ((LinearLayout)findViewById(R.id.date_view)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                materialDatePicker.show(getSupportFragmentManager(),"TagPicker");
+
+            }
+        });
+
+
+        ((LinearLayout)findViewById(R.id.time_view)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+
+                TimePickerDialog mTimePicker = new TimePickerDialog(WalkerDescription.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        ((TextView)findViewById(R.id.select_time)).setText(hourOfDay+":"+minute);
+                    }
+                },hour,minute,false);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
 
 
 
@@ -144,68 +205,7 @@ public class WalkerDescription extends AppCompatActivity {
 
 
 
-        ((TextView)findViewById(R.id.name)).setText(obj.getName());
-        ((TextView)findViewById(R.id.price)).setText("$"+obj.getPrice()+"/hr");
-        ((TextView)findViewById(R.id.rating)).setText(obj.getRating());
-        ((TextView)findViewById(R.id.availability)).setText(obj.getAvailability());
-        ((TextView)findViewById(R.id.description)).setText(obj.getDescription());
-        ((TextView)findViewById(R.id.total_price)).setText("$"+obj.getPrice());
-
-        ((LinearLayout)findViewById(R.id.date_view)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
-//        CalendarConstraints.DateValidator dateValidator = DateValidatorPointForward.now();
-
-        CalendarConstraints.Builder constraintsBuilder =
-                new CalendarConstraints.Builder()
-                        .setValidator(DateValidatorPointForward.now());
-        builder.setCalendarConstraints(constraintsBuilder.build());
-
-
-        MaterialDatePicker materialDatePicker = builder.build();
-
-//        MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.dateRangePicker().setCalendarConstraints()
-
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
-            @Override
-            public void onPositiveButtonClick(Object selection) {
-                ((TextView)findViewById(R.id.select_date)).setText(materialDatePicker.getHeaderText());
-            }
-        });
-
-
-        ((LinearLayout)findViewById(R.id.date_view)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                materialDatePicker.show(getSupportFragmentManager(),"TagPicker");
-
-            }
-        });
-
-
-        ((LinearLayout)findViewById(R.id.time_view)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-
-                TimePickerDialog mTimePicker = new TimePickerDialog(WalkerDescription.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        ((TextView)findViewById(R.id.select_time)).setText(hourOfDay+":"+minute);
-                    }
-                },hour,minute,false);
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-            }
-        });
-
+       
 
 
 
